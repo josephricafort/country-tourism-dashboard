@@ -200,5 +200,7 @@ categories <- c('Accommodation for visitors in hotels and similar establishments
 
 tourism <- bind_rows(arrivals, regions, purpose, transport, expenditure, industries) %>%
   mutate(across(Country:Year, as.factor)) %>%
-  select(Category, Indicator, Country, Year, Units, Value) %>%
+  select(Country, Category, Indicator, Year, Units, Value) %>%
   filter(Category %in% categories)
+
+write.csv(tourism, 'data/output/tourism.csv', row.names = F)
